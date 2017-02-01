@@ -30,5 +30,6 @@ describe('test the unixOrNatural function', function(){
     let result2 = dateTime.unixOrNatural(date2);
     expect(result1).to.eql('unix');
     expect(result2).to.eql('natural');
+    done();
   });
 });
