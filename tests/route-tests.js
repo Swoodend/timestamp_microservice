@@ -23,13 +23,35 @@ describe('accessing the "/" route', function(){
 });
 
 describe('test the unixOrNatural function', function(){
-  it ('should correctly identify if date is unix or natural', function(done){
+  it ('should correctly identify if date is unix or natural', function(){
     let date1 = '1234567812';
     let date2 = 'December%2020,%202015';
     let result1 = dateTime.unixOrNatural(date1);
     let result2 = dateTime.unixOrNatural(date2);
     expect(result1).to.eql('unix');
     expect(result2).to.eql('natural');
-    done();
   });
 });
+
+describe('test the unixToNatural() function', function(){
+  it('converts unix timestamp to the correct natural date string', function(){
+    let unix = '1485985903';
+    let natural = String(dateTime.unixToNatural(unix));
+    expect(natural).to.eql("Wed Feb 01 2017 16:51:43 GMT-0500 (EST)");
+  });
+});
+
+describe('test the formatNatural() function', function(){
+  it('converts a natural date string to the desired output', function(){
+    let dateStr1 = 'Weds, 01 Feb 2017 21:51:43 GMT-0500 (EST)';
+    let converted1 = dateTime.formatNatural(dateStr1);
+    let dateStr2 = 'Thu, 06 Aug 2026 03:11:43'
+    let converted2 = dateTime.formatNatural(dateStr2)
+    let dateStr3 = 'Wed, 09 Sep 2026 20:31:43 GMT (PST)';
+    let converted3 = dateTime.formatNatural(dateStr3);
+
+    expect(converted1).to.eql('February 01, 2017');
+    expect(converted2).to.eql('August 06, 2026');
+    expect(converted3).to.eql('September 09, 2026');
+  })
+})
