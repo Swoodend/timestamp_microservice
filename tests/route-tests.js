@@ -4,6 +4,7 @@ const expect = chai.expect;
 const request = require('supertest');
 const app = require('../lib/server.js');
 const dateTime = require('../lib/helpers/datetime.js');
+const timestamp = require('unix-timestamp');
 
 
 
@@ -34,24 +35,24 @@ describe('test the unixOrNatural function', function(){
 });
 
 describe('test the unixToNatural() function', function(){
-  it('converts unix timestamp to the correct natural date string', function(){
+  it('converts unix timestamp, returning natural date string', function(){
     let unix = '1485985903';
     let natural = String(dateTime.unixToNatural(unix));
     expect(natural).to.eql("Wed Feb 01 2017 16:51:43 GMT-0500 (EST)");
+    expect(typeof natural).to.eql('string');
   });
 });
 
 describe('test the formatNatural() function', function(){
   it('converts a natural date string to the desired output', function(){
-    let dateStr1 = 'Weds, 01 Feb 2017 21:51:43 GMT-0500 (EST)';
+    let dateStr1 = 'Wed Feb 01 2017 17:50:19 GMT-0500 (EST)';
     let converted1 = dateTime.formatNatural(dateStr1);
-    let dateStr2 = 'Thu, 06 Aug 2026 03:11:43'
+    let dateStr2 = 'Thu Aug 06 2026 03:11:43 GMT-0500 (PST)'
     let converted2 = dateTime.formatNatural(dateStr2)
-    let dateStr3 = 'Wed, 09 Sep 2026 20:31:43 GMT (PST)';
-    let converted3 = dateTime.formatNatural(dateStr3);
 
     expect(converted1).to.eql('February 01, 2017');
     expect(converted2).to.eql('August 06, 2026');
-    expect(converted3).to.eql('September 09, 2026');
+
+
   })
 })
