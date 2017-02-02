@@ -20,7 +20,7 @@ describe('accessing the "/" route', function(){
   it('should send the landing page html file', function(done){
     request(app)
       .get('/')
-      .expect('Content-Length', "518")
+      .expect('Content-Length', "712")
       .expect('Content-Type', /html/, done)
   });
 });
