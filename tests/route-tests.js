@@ -7,7 +7,6 @@ const dateTime = require('../lib/helpers/datetime.js');
 const timestamp = require('unix-timestamp');
 
 
-
 describe('accessing the "/" route', function(){
   it('should respond with a 200', function(done){
     request(app)
@@ -52,7 +51,6 @@ describe('test the formatNatural() function', function(){
 
     expect(converted1).to.eql('February 01, 2017');
     expect(converted2).to.eql('August 06, 2026');
+  });
+});
 
-
-  })
-})
