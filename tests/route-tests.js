@@ -2,7 +2,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const request = require('supertest');
-const app = require('../lib/server.js');
+const app = require('../lib/app.js');
 const dateTime = require('../lib/helpers/datetime.js');
 
 describe('accessing the "/" route', function(){

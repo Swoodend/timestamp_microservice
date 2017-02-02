@@ -2,7 +2,7 @@
   "name": "timestamp_microservice",
   "version": "1.0.0",
   "description": "A timestamp microservice completed for FCC backend challenges",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha tests"
   },
